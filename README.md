@@ -19,10 +19,11 @@ This repository contains a sample solution and documentation explaining CYC Codi
 ##### Commenting
 1. [How to comment your code](#how-to-comment-your-code)
 ##### Syntactic Sugar
-1. Ternary operators
-2. Using var
-3. Inline statements
-4. String formatting
+1. [Ternary operators](#ternary-operators)
+2. [Using var](#using-var)
+3. [Inline statements](#inline-statements)
+4. [String formatting](#string-formatting)
+5. [Object initialisation](#object-initialisation)
 ---
 ## Naming Conventions
 Naming conventions are used to ensure that all developers can quickly identify the type, purpose or scope of a variable, method, class etc in the codebase. By maintaining a standard, we aim to make it easier for other developers (including those that might join in the future) to pick up a project.
