@@ -14,14 +14,14 @@ This repository contains a sample solution and documentation explaining CYC Codi
 9. [Enums](#enum-naming-conventions)
 10. [Files](#files)
 ##### Class structure
-1. [Braces](#braces)
+1. [Brackets](#brackets)
 2. [Regions](#regions)
 ##### Commenting
 1. [How to comment your code](#how-to-comment-your-code)
 ##### Syntactic Sugar
 1. Ternary operators
 2. Using var
-3. Inline methods
+3. Inline statements
 4. String formatting
 ---
 ## Naming Conventions
@@ -372,9 +372,7 @@ var House = new House()
 var houseNumbers = postcodeService.GetNumbers(postcode) // Retrieve house numbers by postcode
 ```
 
-Begin a comment with a space then an uppercase letter.
-
-Comment text should be completed with a full stop.
+Begin a comment with a space then an uppercase letter. and end it with a full stop with a full stop.
 
 Classes and method should be commented using the /// summary format. 
 
@@ -389,5 +387,84 @@ private float timesPI(float number)
 {
     float PI = 3.14f; 
     return number * 3.14f; 
+}
+```
+
+## Syntactic sugar
+C# is an old language and as such there is often more than one way to achieve the same result. Language designers have built in [syntactical sugar](https://en.wikipedia.org/wiki.sytanctic_sugar) to make various parts of the language easier to read an express. Sometimes these expressions have the opposite effect and make it harder to read code (usually when chaining things together).
+
+### Ternary operators
+Ternary operators provide a shorthand for if-else statements and are useful when setting a variable dependent on the state of another. If you require chaining of ternary operators you should replace them with an if else block.
+>**Why?** Nested ternaries quickly become difficult to read.
+```cs
+// Correct
+var shippingCharge = (address.Zone == Zones.East) 
+    ? 15.00m
+    : 10.00m;
+    
+// Incorrect
+var shippingCharge = (address.Zone == Zones.East)
+    ? 15.00m
+    : (address.Zone == Zones.South)
+        ? 20.50m
+        : 10.00m;
+```
+
+### Using var
+C# allows implicit typing using the `var` keyword. Implicit typing infers the type of the variable by evaluating the expression after the equals sign.
+
+Use `var` wherever possible for non-public variables. Use type name for public variables to expose useful information to other classes.
+
+>**Why?** It removes clutter from code, especially with generic types. It does not cost anything.
+```cs
+var stream = File.Path(path);
+var customers = new Dictionary<int,Customer>();
+```
+
+## Inline statements
+C# allows inline and anonymous functions, use them when the method is simple (1 line of code) to keep code clear of clutter.
+```cs
+// Original style
+var testDelegateA = new TestDelegate(delegatedMethod);
+
+// Inline anonymous
+var testDelegateB = delegate(string output) { Console.WriteLine(output); }
+
+// Lamba initialized
+TestDelegate testDelegateC = (output) => { Console.WriteLine(output); }
+
+
+static void delegatedMethod(string output)
+{
+    Console.WriteLine(output);
+}
+```
+
+### String formatting
+String output should be formatted using the new C# 6.0 interpolation feature where possible (use `$` before your string)
+>**Why?** Easier to read the output.
+```cs
+var welcomeMessage = $"Welcome back {customer.FirstName}, you have {customer.Statistics.newMessagesSinceLastLogin} new messages";
+```
+### Object Initialisation
+You should new up collections and objects for the developer in your own classes. Where possible, inline these to keep the constructor clear.
+
+public collections should normally contain a private setter which stops them being overwritten elsewhere. Methods such as `Add()` are still available.
+
+```cs
+public class UserFeedback
+{
+    // Inline initialisation
+    public ICollection<string> Feedback { get;  private set; } =  new List<string>();
+    
+    public User User { get; private set; }
+    
+    public UserFeedback(User user)
+    {
+        // Initializing in constructor
+        User = user;
+        
+        //...
+    }
 }
 ```
