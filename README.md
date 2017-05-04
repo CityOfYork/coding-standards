@@ -256,7 +256,7 @@ public class UserAddressViewModel
     }
 }
 ```
-
+---
 ## Class structure
 Structuring files in a set way makes it easy to find the code you are looking for, even if you've not seen it before. Generally a file will read like this (top to bottom):
 1. Using statements
@@ -346,7 +346,7 @@ public class Polygon
 #endregion
 }
 ```
-
+---
 ## Commenting
 
 >**Why?** Commenting business logic makes it easier to maintain for other developers. Maintaining a standard for comments means we're more likely to understand them in a year or two.
@@ -390,7 +390,7 @@ private float timesPI(float number)
     return number * 3.14f; 
 }
 ```
-
+---
 ## Syntactic sugar
 C# is an old language and as such there is often more than one way to achieve the same result. Language designers have built in [syntactical sugar](https://en.wikipedia.org/wiki.sytanctic_sugar) to make various parts of the language easier to read an express. Sometimes these expressions have the opposite effect and make it harder to read code (usually when chaining things together).
 
@@ -422,7 +422,7 @@ var stream = File.Path(path);
 var customers = new Dictionary<int,Customer>();
 ```
 
-## Inline statements
+### Inline statements
 C# allows inline and anonymous functions, use them when the method is simple (1 line of code) to keep code clear of clutter.
 ```cs
 // Original style
