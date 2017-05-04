@@ -350,7 +350,7 @@ public class Polygon
 
 >**Why?** Commenting business logic makes it easier to maintain for other developers. Maintaining a standard for comments means we're more likely to understand them in a year or two.
 
-## How to comment your code
+### How to comment your code
 
 Comments should always be on a new line above the code being referred to.
 >**Exception:** Multiline code such as initialisers may contain a comment to the right if it makes it easier to understand
