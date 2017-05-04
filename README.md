@@ -392,7 +392,7 @@ private float timesPI(float number)
 ```
 ---
 ## Syntactic sugar
-C# is an old language and as such there is often more than one way to achieve the same result. Language designers have built in [syntactical sugar](https://en.wikipedia.org/wiki.sytanctic_sugar) to make various parts of the language easier to read an express. Sometimes these expressions have the opposite effect and make it harder to read code (usually when chaining things together).
+C# is an old language and as such there is often more than one way to achieve the same result. Language designers have built in [syntactical sugar](https://en.wikipedia.org/wiki/Syntactic_sugar) to make various parts of the language easier to read an express. Sometimes these expressions have the opposite effect and make it harder to read code (usually when chaining things together).
 
 ### Ternary operators
 Ternary operators provide a shorthand for if-else statements and are useful when setting a variable dependent on the state of another. If you require chaining of ternary operators you should replace them with an if else block.
