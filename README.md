@@ -376,7 +376,18 @@ Begin a comment with a space then an uppercase letter.
 
 Comment text should be completed with a full stop.
 
-Classes and method should be commented using the /// format. 
-
+Classes and method should be commented using the /// summary format. 
 
 >**Why?** Visual studio will auto complete this to a summary comment that explains the use of the class or method.
+```cs
+/// <summary>
+/// Returns value multiplied by Pi
+/// </summary>
+/// <param name="number">input number e.g. radius</param>
+/// <returns>value multiplied by pi e.g. circumference</returns>
+private float timesPI(float number)
+{
+    float PI = 3.14f; 
+    return number * 3.14f; 
+}
+```
