@@ -7,15 +7,21 @@ using System.Collections.Generic;
 /// A client might be an clientside app or a server, anything that consumes your data.
 /// </summary> 
 
-// We use route based attributes wherever possible as it is easier to reference and clearer
-[Route("[controller]")]
+// We use route based attributes wherever possible as it is easier to reference and clearer.
+// WebApi controllers should always sit behind the api keyword. http://localhost:5000/api/Data in this case.
+[Route("api/[controller]")]
 public class DataController : Controller 
 {
     /// <summary>
     /// Get 10 random numbers
     /// </summary>
     /// <returns>10 random integer values.</returns>
-    [HttpGet("[action]")]
+
+    // This is the default get action so we need to map it using root values and the action keyword
+    [Route("")]
+    [Route("~/")]
+    [Route("[action]")]
+    [HttpGet]
     public IEnumerable<int> Get()
     {
         // Only comment complicated code, try to keep code simple so it is effectively self commenting.
