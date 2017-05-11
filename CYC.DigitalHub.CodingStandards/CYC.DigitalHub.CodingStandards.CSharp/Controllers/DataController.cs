@@ -31,7 +31,7 @@ public class DataController : Controller
         var returnValue = new List<DataApiUserViewModel>();
 
         // Counter variables can be a single letter, usually an i.
-        // Nested counters generally proceed down the alphabet e.g. j, k, l though you may choose a more appropriate name.
+        // If nesting for loops then provide more meaningful variable names to avoid confusion
         for (var i = 0; i < 10; i++)
         {
             returnValue.Add(new DataApiUserViewModel
